@@ -1,0 +1,58 @@
+# all [OK]
+GET http://localhost:5555/api/products
+
+###
+# search query [OK]
+GET http://localhost:5555/api/products?search=produ
+
+###
+# limit offset query [TODO] funciona amedias 
+GET http://localhost:5555/api/products?offset=0&limit=3
+
+###
+# get by id [OK]
+GET http://localhost:5555/api/products/6504b8cabe813b5af12ee4fd
+
+###
+
+# create a product [OK]
+POST  http://localhost:5555/api/products HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "cuarto product",
+  "price": 10,
+  "currency": "usd",
+  "category": ["hogar", "mascotas"],
+  "picture": "https://fastly.picsum.photos/id/23/200/200.jpg?hmac=IMR2f77CBqpauCb5W6kGzhwbKatX_r9IvgWj6n7FQ7c",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+  "stock": 200
+}
+###
+
+# update a product [OK]
+PUT  http://localhost:5555/api/products/6504b9d24f24b7e0b5e37b55 HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "prueba",
+  "price": 300.99,
+  "currency": "br",
+  "category": ["hogar", "jardin"],
+  "picture": "https://picsum.photos/200",
+  "description": "test return",
+  "stock": 100
+}
+###
+
+# partial update product [OK]
+PATCH   http://localhost:5555/api/products/6504b8cabe813b5af12ee4fd HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "name modify"
+}
+###
+
+# delete a product [OK]
+DELETE  http://localhost:5555/api/products/6504b8cabe813b5af12ee4fd
